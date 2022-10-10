@@ -7,9 +7,9 @@
  */
 public class CrossbodyBag extends Bag{
     private final int numberOfStraps;
-    CrossbodyBag(String color, int capacity, int straps) {
+    CrossbodyBag(String color, int capacity, int s) {
         super(color, capacity);
-        this.numberOfStraps = straps;
+        this.numberOfStraps = s;
     }
     public int getNumberOfStraps(){
 
