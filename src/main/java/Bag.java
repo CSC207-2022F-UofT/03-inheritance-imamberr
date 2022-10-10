@@ -8,6 +8,18 @@
 import java.util.ArrayList;
 
 public abstract class Bag {
+    private String color;
+    private int numberOfContents;
+    private int capacity;
+    private ArrayList<String> contents;
+
+    public Bag(String color, int capacity) {
+        this.color = color;
+        this.capacity = capacity;
+        this.numberOfContents = 0;
+        this.contents = new ArrayList<String>();
+    }
+
     /*
      * TODO: Create the following private instance variables
      *       - a String named color
@@ -15,10 +27,6 @@ public abstract class Bag {
      *       - an int named capacity
      *       - an array of Strings named contents
      */
-    private String color;
-    private int numberOfContents;
-    private int capacity;
-    private ArrayList<String> contents;
 
 
 
@@ -32,14 +40,19 @@ public abstract class Bag {
      * be empty (e.g. numberOfContents is 0 and an empty String array for
      * its contents.)
      */
-    public Bag(String Bagcolor, int Bagcapacity){
-        this.color = Bagcolor;
-        this.capacity = Bagcapacity;
-        this.numberOfContents = 0;
-        this.contents = new ArrayList<String>();
+
+    public int getNumberOfContents() {
+        return this.numberOfContents;
     }
 
+    public String getColor() {
+        return this.color;
+    }
 
+    public int getCapacity() {
+
+        return this.capacity;
+    }
 
     /*
      * TODO: Create a variety of 'getter' functions.
@@ -48,26 +61,15 @@ public abstract class Bag {
      *           - getNumberOfContents
      *           - getCapacity
      */
-    public String getColor() {
-      return color;
+
+    public void setColor(String color) {
+        this.color = color;
     }
-
-    public int getNumberOfContents() {
-        return numberOfContents;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-
     /*
      * TODO: Create a setter function called setColor which sets the
      *       color of this bag to the given color.
      */
-    public void setColor(String Color) {
-        this.color = Color;
-    }
+
 
 
 
@@ -75,19 +77,35 @@ public abstract class Bag {
     /*
      * TODO: Create a method called addItem that takes in a String
      *       representing an item in the Bag.
-     *       The item is added into the Bag if the number of items
      *       in the bag is < the capacity of the Bag.
      *       Remember to modify numberOfContents accordingly.
      *
      *       This method should return true if the item was added
      *       and false otherwise.
      */
-    public void addItem(String item){
-        if (contents.size() < capacity) {
+    public boolean addItem(String item){
+        if (capacity > contents.size()) {
             contents.add(item);
-            numberOfContents += 1;
+            numberOfContents ++;
+            return true;
+        }
+        else {
+            return false;
         }
     }
+
+    public String popItem(){
+        if(capacity != 0){
+            int i = contents.size() - 1;
+            String item = contents.get(i);
+            contents.remove(i);
+            numberOfContents --;
+            return item;
+        }
+        return null;
+    }
+
+
 
 
     /**
@@ -100,16 +118,7 @@ public abstract class Bag {
      *
      * @return
      */
-    public String popItem(){
-        if(capacity != 0){
-            int lastIndex = contents.size() - 1;
-            String lastItem = contents.get(lastIndex);
-            contents.remove(lastIndex);
-            numberOfContents -= 1;
-            return lastItem;
-        }
-        return null;
-    }
+
 
 
 
@@ -121,7 +130,7 @@ public abstract class Bag {
      */
     public void increaseCapacity(int n) {
         // TODO: Implement this method.
-        this.capacity = capacity + n;
+
     }
 
     /**
@@ -149,3 +158,4 @@ public abstract class Bag {
      */
     public abstract void enhance();
 }
+
