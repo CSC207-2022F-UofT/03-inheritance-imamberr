@@ -6,6 +6,10 @@
  */
 
 public abstract class Bag {
+    private String color;
+    private int numberOfContents;
+    private int capacity;
+    private String[] contrents;
     /*
      * TODO: Create the following private instance variables
      *       - a String named color
@@ -13,6 +17,10 @@ public abstract class Bag {
      *       - an int named capacity
      *       - an array of Strings named contents
      */
+    phblic void Bag(String bagColour, int capacity){
+        this.color = bagColour;
+        this.capacity = capacity;
+    } 
 
 
 
